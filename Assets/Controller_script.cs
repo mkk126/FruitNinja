@@ -19,6 +19,13 @@ public class Controller_script : MonoBehaviour
             color = renderer.material.color;
 }
 
+    //Initializes before script starts
+    void Awake()
+    {
+         mat = renderer.material;
+         color = mat.color;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,23 +36,21 @@ public class Controller_script : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(grip_action.GetChanged(hand));
         if (collision.gameObject.name == "Cube")
         {
 
             color.a =  1 - squeeze_action.GetAxis(hand);
-            renderer.material.color = color;
+            mat.color = color;
         }
 
     }
     private void OnTriggerStay(Collider collision)
     {
-        Debug.Log("Stay Trigger");
         if (collision.gameObject.name == "Cube")
         {
 
             color.a = 1 -  squeeze_action.GetAxis(hand);
-            renderer.material.color = color;
+            mat.color = color;
             if (grip_action.GetState(hand))
             {
                 collision.gameObject.transform.position = this.transform.position;

@@ -17,15 +17,18 @@ public class Chopped : MonoBehaviour
         
     }
 
+    private bool Chopped = false;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Sword")
+        if (Chopped)
         {
-            Debug.Log("Sword");
+            return;
+        }
+        if (collision.gameObject.CompareTag("Sword")){
+            Chopped = true;
             Instantiate(appleSplit, transform.position, transform.rotation);
-
             Destroy(this.gameObject);
-
         }
     }
 }

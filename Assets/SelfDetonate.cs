@@ -14,13 +14,6 @@ public class SelfDetonate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        timer -= Time.smoothDeltaTime;
-        if(timer == 0)
-        {
-            Destroy(this);
-        }
-        */
         if(transform.position.y <= -10)
         {
             Destroy(this.gameObject);

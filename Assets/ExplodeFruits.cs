@@ -10,7 +10,7 @@ public class ExplodeFruits : MonoBehaviour
     {
         Debug.Log("Kablam");
         rb = GetComponent<Rigidbody>();
-        rb.AddExplosionForce(50.0f, transform.position, 5.0f);
+        rb.AddExplosionForce(50f, transform.position + Vector3.down * 0.25f, 5f);
     }
 
     // Update is called once per frame
